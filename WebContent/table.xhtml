@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+       <h:head>
+    	<script src ="./resources/js/sortable.js"></script>
+    	<style>
+    	/* Sortable tables */
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
+    	</style>
+    </h:head>
+    <h:body>
+ 
+    	<h1>Opportunity Connection</h1>
+    
+    <div>
+    <h:form>
+    Tracks : <h:selectOneMenu id="subscriptions" value="#{lookupController.tracks}" >
+    			<f:selectItems value="#{lookupController.tracks}" />
+    		</h:selectOneMenu>
+    </h:form>
+    </div>
+    <div>
+ 
+    		<h:dataTable value="#{emergingLeaderController.profiles}" var="o"
+    			id="sortable"
+    			class="sortable"
+    		>
+ 
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">picUrl</f:facet>
+    				<!-- row record -->
+
+    				<img id="pic" 
+    				src="#{o.picUrl}" alt="User Photo" onerror="this.src='resources/images/no_photo.jpg';" style="border-width:0px;" height="100" width="100" />
+    				
+    			</h:column>
+ 
+    			<h:column>
+    				<f:facet name="header">name</f:facet>
+    				#{o.name}
+    			</h:column>
+ 
+    			<h:column>
+    				<f:facet name="header">track</f:facet>
+    				#{o.track}
+    			</h:column>
+ 
+    			<h:column>
+    				<f:facet name="header">areaOfInterest</f:facet>
+    				#{o.areaOfInterest}
+    			</h:column>
+    			
+    			<h:column>
+    				<f:facet name="header">learningInterest</f:facet>
+    				#{o.learningInterest}
+    			</h:column>
+    			
+    			<h:column>
+    				<f:facet name="header">preferredLocation</f:facet>
+    				#{o.preferredLocation}
+    			</h:column>
+    			
+    			<h:column>
+    				<f:facet name="header">cvUrl</f:facet>
+    				<a href="#{o.cvUrl}" >View Details</a>
+    			</h:column>
+ 
+    		</h:dataTable>
+ 	</div>
+    </h:body>
+</html>
